@@ -1,0 +1,19 @@
+current directory: /Users/araikeisuke/worldcup/vendor/bundle/gems/byebug-11.0.1/ext/byebug
+/Users/araikeisuke/.rbenv/versions/2.5.5/bin/ruby -r ./siteconf20190825-45435-sh3wgw.rb extconf.rb
+creating Makefile
+
+current directory: /Users/araikeisuke/worldcup/vendor/bundle/gems/byebug-11.0.1/ext/byebug
+make "DESTDIR=" clean
+
+current directory: /Users/araikeisuke/worldcup/vendor/bundle/gems/byebug-11.0.1/ext/byebug
+make "DESTDIR="
+compiling breakpoint.c
+compiling byebug.c
+compiling context.c
+compiling locker.c
+compiling threads.c
+linking shared-object byebug/byebug.bundle
+
+current directory: /Users/araikeisuke/worldcup/vendor/bundle/gems/byebug-11.0.1/ext/byebug
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 byebug.bundle ./.gem.20190825-45435-1f6qfhf/byebug

@@ -1,0 +1,25 @@
+<% require 'csv' %>
+<div class='container'>
+  <h1>世界ランキング</h1>
+
+  <% csv_data = CSV.table('app/views/schedules/ranking.csv', headers: true) %>
+
+  <table>
+    <thead>
+      <tr>
+        <td>国名</td>
+        <td>pool</td>
+        <td>ランキング</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% csv_data.each do |data| %>
+        <tr>
+          <td><%= data[:country] %></td>
+          <td><%= data[:pool] %></td>
+          <td><%= data[:ranking] %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

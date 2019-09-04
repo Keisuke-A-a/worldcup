@@ -1,0 +1,31 @@
+<% require 'csv' %>
+<div class='container'>
+  <h1>スケジュール</h1>
+
+  <% csv_data = CSV.table('app/views/schedules/schedule.csv', headers: true) %>
+
+  <table>
+    <thead>
+      <tr>
+        <td>日時</td>
+        <td>曜日</td>
+        <td>試合開始時刻</td>
+        <td>試合会場</td>
+        <td></td>
+        <td></td>
+      </tr>
+    </thead>
+    <tbody>
+      <% csv_data.each do |data| %>
+        <tr>
+          <td><%= data[:date] %></td>
+          <td><%= data[:dayoftheweek] %></td>
+          <td><%= data[:time] %></td>
+          <td><%= data[:place] %></td>
+          <td><%= data[:member1] %></td>
+          <td><%= data[:member2] %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,47 @@
+html {
+  // 基準1rem=10pxで行く
+  font-size: 62.5%;
+  // 600px以降から、100pxごとに1.25px大きくなる
+  @media (min-width: 600px) {
+    font-size: calc(62.5% + 5 * (100vw - 600px) / 400)
+  }
+
+  // 1,000px以上は、15pxに
+  @media (min-width: 1000px) {
+    font-size: calc(15/16*100%)
+  }
+}
+
+.alert {
+  margin-top: 0;
+  width: 100%;
+  position: absolute !important;
+  z-index: 10000;
+}
+
+main {
+  h1 {
+    font-size: 3rem;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+  h3 {
+    font-size: 1.5rem;
+  }
+  h4 {
+    font-size: 1rem;
+  }
+  .container {
+    margin: 0 auto;
+  }
+}
+
+#slidebar {
+  height: 100vh;
+  background-color: #8fa4dd;
+
+  h1 {
+    margin-top: 2.5rem;
+  }
+}

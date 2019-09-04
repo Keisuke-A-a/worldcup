@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Worldcup</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>" role="alert"><%= value %></div>
+    <% end %>
+
+    <%= render partial: '/layouts/navbar' %>
+    <div class='row'>
+      <%= render partial: '/layouts/slidebar' %>
+      <div class='col-lg-9'>
+        <%= yield %>
+      </div>
+
+    </div>
+    <script>
+$(function(){
+  $(".alert").fadeOut(2000);
+});
+    </script>
+</html>

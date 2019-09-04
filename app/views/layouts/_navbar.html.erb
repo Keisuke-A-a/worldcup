@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark navbar-fixed-top d-lg-none sticky-top">
+  <div class="container">
+    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse" >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav ml-auto">
+        <% if logged_in? %>
+          <li class="nav-item">
+            <%= link_to 'RANKING', schedules_ranking_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to '国別情報', "#", class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'スケジュール', schedules_index_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to '試合結果', "#", class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to("Log out", logout_path,{ method: :delete, class: "nav-link" }) %>
+          </li>
+        <% else %>
+
+          <li class="nav-item">
+            <%= link_to "Log in", login_path, class: "nav-link" %>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to "Sign up", new_user_path, class: "nav-link" %>
+          </li>
+
+          <li class="nav-item">
+          </li>
+
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
