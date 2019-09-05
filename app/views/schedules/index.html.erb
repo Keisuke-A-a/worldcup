@@ -1,31 +1,17 @@
-<% require 'csv' %>
-<div class='container'>
-  <h1>スケジュール</h1>
+<div id='schedule'>
+  <div class='container text-center ml-auto'>
+    <h1>スケジュール</h1>
 
-  <% csv_data = CSV.table('app/views/schedules/schedule.csv', headers: true) %>
-
-  <table>
-    <thead>
-      <tr>
-        <td>日時</td>
-        <td>曜日</td>
-        <td>試合開始時刻</td>
-        <td>試合会場</td>
-        <td></td>
-        <td></td>
-      </tr>
-    </thead>
-    <tbody>
-      <% csv_data.each do |data| %>
-        <tr>
-          <td><%= data[:date] %></td>
-          <td><%= data[:dayoftheweek] %></td>
-          <td><%= data[:time] %></td>
-          <td><%= data[:place] %></td>
-          <td><%= data[:member1] %></td>
-          <td><%= data[:member2] %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+    <%= form_with url: 'select', remote: true do |f| %>
+      <ul class='list-unstyled form-group' >
+        <li>
+          <%= f.select :tv,
+            { "テレビ局": :none, "N H K": :nhk, "日本テレビ": :ntv }, {},
+            { class: 'form-control drop-item' } %>
+        </li>
+      </ul>
+    <%= f.submit '絞り込み', class: 'btn btn-block btn-primary' %>
+    <% end %>
+    <%= render partial: 'table' %>
+  </div>
 </div>

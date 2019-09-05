@@ -9,5 +9,6 @@ Rails.application.routes.draw do
 
   get 'schedules/index', to: 'schedules#index'
   get 'schedules/ranking', to: 'schedules#ranking'
+  post 'schedules/select', to: 'schedules#select'
   resources :account_activations, only: [:edit]
 end

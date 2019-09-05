@@ -1,0 +1,31 @@
+module ApplicationHelper
+  def current_user
+    @current_user ||= User.find_by(id: session[:user_id])
+  end
+
+  def logged_in?
+    !current_user.nil?
+  end
+
+  def select_tv
+    case @tv
+    when "nhk"
+      s = 7
+      for i in 1..@csv_data.count do
+        if @csv_data[i-1][s] == 1
+          @csv_arry << @csv_data[i-1]
+        end
+      end
+    when "ntv"
+      s = 8
+      for i in 1..@csv_data.count do
+        if @csv_data[i-1][s] == 1
+          @csv_arry << @csv_data[i-1]
+        end
+      end
+    else
+      @csv_array = @csv_data
+    end
+
+  end
+end

@@ -6,4 +6,8 @@ class SchedulesController < ApplicationController
 
   def ranking
   end
+  
+  def select
+    @tv = params[:tv]
+  end
 end

@@ -1,0 +1,36 @@
+<% require 'csv' %>
+<% @csv_data = CSV.table('app/views/schedules/schedule.csv', headers: true) %>
+<% @csv_arry = Array.new %>
+<% select_place %>
+<% select_tv %>
+
+<div id='table_area'>
+  <table class='m-auto'>
+    <thead>
+      <tr>
+        <td>日時</td>
+        <td>曜日</td>
+        <td>試合開始時刻</td>
+        <td>試合会場</td>
+        <td></td>
+        <td></td>
+        <td>N H K</td>
+        <td>日テレ</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @csv_arry.each do |data| %>
+        <tr>
+          <td><%= data[:date] %></td>
+          <td><%= data[:dayoftheweek] %></td>
+          <td><%= data[:time] %></td>
+          <td><%= data[:place] %></td>
+          <td><%= data[:member1] %></td>
+          <td><%= data[:member2] %></td>
+          <td><%= "○" if data[:nhk] == 1 %></td>
+          <td><%= "○" if data[:ntv] == 1 %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

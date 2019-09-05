@@ -49,6 +49,7 @@ test:
 #
 production:
   <<: *default
+  adapter: postgresql
+  encodeing: unicode
+  pool: 5
   database: worldcup_production
-  username: worldcup
-  password: <%= ENV['WORLDCUP_DATABASE_PASSWORD'] %>
