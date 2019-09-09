@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get '/', to: 'schedules#top'
+
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
@@ -9,6 +11,7 @@ Rails.application.routes.draw do
 
   get 'schedules/index', to: 'schedules#index'
   get 'schedules/ranking', to: 'schedules#ranking'
+  post 'schedules/selectranking', to: 'schedules#selectranking'
   post 'schedules/select', to: 'schedules#select'
   resources :account_activations, only: [:edit]
 end

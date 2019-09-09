@@ -1,25 +1,18 @@
 <% require 'csv' %>
-<div class='container'>
+<% csv_data = CSV.table('app/views/schedules/ranking.csv', headers: true) %>
+<div class='container text-center'>
   <h1>世界ランキング</h1>
 
-  <% csv_data = CSV.table('app/views/schedules/ranking.csv', headers: true) %>
 
-  <table>
-    <thead>
-      <tr>
-        <td>国名</td>
-        <td>pool</td>
-        <td>ランキング</td>
-      </tr>
-    </thead>
-    <tbody>
-      <% csv_data.each do |data| %>
-        <tr>
-          <td><%= data[:country] %></td>
-          <td><%= data[:pool] %></td>
-          <td><%= data[:ranking] %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+  <%= form_with url: 'selectranking' do |f| %>
+    <ul class='list-unstyled form-group m-auto' >
+      <li>
+        <%= f.label "プール" %>
+      <%= f.select :pool,
+        { "全て": :none, "A": "A", "B": "B", "C": "C", "D": "D" }, {},{ class: 'form-control drop-item' } %>
+    </li>
+    <%= f.submit "絞り込み", class: 'btn btn-block btn-primary form-control' %>
+    </ul>
+  <% end %>
+
+  <%= render partial: "rankingtable" %>

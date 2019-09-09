@@ -1,0 +1,25 @@
+<% require 'csv' %>
+<% @csv_data = CSV.table('app/views/schedules/ranking.csv', headers: true) %>
+<% @csv_arry = Array.new %>
+<% select_ranking_pool %>
+<div id="ranking_table_area">
+  <table class='m-auto'>
+    <thead>
+      <tr>
+        <td>国名</td>
+        <td>pool</td>
+        <td>ランキング</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @csv_data.each do |data| %>
+        <tr>
+          <td><%= data[:country] %></td>
+          <td><%= data[:pool] %></td>
+          <td><%= data[:ranking] %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+</div>

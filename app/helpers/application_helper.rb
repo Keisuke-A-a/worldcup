@@ -7,18 +7,48 @@ module ApplicationHelper
     !current_user.nil?
   end
 
-  def select_place
-    case @place
-    when '東京'
+  def select_loop(str, s)
+    if str && str != "none"
+      for i in 1..@csv_data.count do
+        if @csv_data[i-1][s] == str
+          @csv_arry << @csv_data[i-1]
+        end
+      end
+    else
+      @csv_arry = @csv_data
     end
+    @csv_data = @csv_arry
+    @csv_arry = Array.new
+  end
+
+  def select_ranking_pool
+    select_loop(@pool, 2)
+  end
+  def select_pool
+    select_loop(@pool, 6)
+  end
+  
+
+  def select_country
+    if @country && @country != "none"
+      for i in 1..@csv_data.count do
+        if @csv_data[i-1][7] == @country || @csv_data[i-1][8] == @country
+          @csv_arry << @csv_data[i-1]
+        end
+      end
+    else
+      @csv_arry = @csv_data
+    end
+    @csv_data = @csv_arry
+    @csv_arry = Array.new
   end
 
   def select_tv
     case @tv
     when "nhk"
-      loop_tv(7)
+      loop_tv(9)
     when "ntv"
-      loop_tv(8)
+      loop_tv(10)
     else
       @csv_arry = @csv_data
     end
@@ -30,6 +60,5 @@ module ApplicationHelper
         @csv_arry << @csv_data[i-1]
       end
     end
-
   end
 end

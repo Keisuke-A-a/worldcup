@@ -32,20 +32,19 @@ Rails.application.configure do
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.delivery_method = :test
+  # config.action_mailer.delivery_method = :test
   host = 'localhost:3000'
   config.action_mailer.default_url_options = { host: host, protocol: 'http' }
-  # config.action_mailer.delivery_method = :smtp
-  # config.action_mailer.smtp_settings = {
-  #   port:                   587,
-  #   address:                'smtp.gmail.com',
-  #   domain:                 'gmail.com',
-  #   user_name:              'worldcup2019schedules@gmail.com',
-  #   password:               'GDuHWVGACBGu2k@9',
-  #   authentication:         'login',
-  #   enable_starttls_auto:   true
-  # }
+  config.action_mailer.delivery_method = :smtp
 
+  config.action_mailer.smtp_settings = {
+    port: 587,
+    address: 'smtp.gmail.com',
+    domain: 'smtp.gmail.com',
+    user_name: ENV["GMAIL_USERNAME"],
+    password: ENV["GMAIL_PASSWORD"],
+    enable_starttls_auto: true
+  }
   config.action_mailer.perform_caching = false
 
   # Print deprecation notices to the Rails logger.

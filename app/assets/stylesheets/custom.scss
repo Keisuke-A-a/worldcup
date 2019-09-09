@@ -37,6 +37,11 @@ main {
   }
 }
 
+td {
+  padding: 1rem 1rem;
+  font-size: 1rem;
+  border: solid;
+}
 #slidebar {
   height: 100vh;
   background-color: #8fa4dd;
@@ -48,9 +53,11 @@ main {
 
 #schedule {
   margin-top: 2rem;
-  td {
-    padding: 1rem 1rem;
-    font-size: 1rem;
-    border: solid;
+}
+
+.form-group {
+  width: 50%;
+  .form-control {
+    margin-bottom: 1rem;
   }
 }

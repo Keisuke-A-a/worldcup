@@ -1,17 +1,33 @@
 <div id='schedule'>
   <div class='container text-center ml-auto'>
     <h1>スケジュール</h1>
-
-    <%= form_with url: 'select', remote: true do |f| %>
-      <ul class='list-unstyled form-group' >
+    <%= form_with url: 'select' do |f| %>
+      <ul class='list-unstyled form-group m-auto' >
         <li>
-          <%= f.select :tv,
-            { "テレビ局": :none, "N H K": :nhk, "日本テレビ": :ntv }, {},
-            { class: 'form-control drop-item' } %>
-        </li>
+          <%= f.label "プール" %>
+          <%= f.select :pool,
+            { "全て": :none, "A": "A", "B": "B", "C": "C", "D": "D" }, {},{ class: 'form-control drop-item' } %>
+      </li>
+      <li>
+        <%= f.label "国", class: 'text-left' %>
+        <%= f.select :country,
+          { "全て": :none, "ウェールズ": "ウェールズ", "NZ": "NZ", "アイルランド": "アイルランド", 
+            "南アフリカ": "南アフリカ", "イングランド": "イングランド", "オーストラリア": "オーストラリア",
+            "フランス": "フランス", "スコットランド": "スコットランド", "日本": "日本", "フィジー": "フィジー",
+            "アルゼンチン": "アルゼンチン", "ジョージア": "ジョージア", "イタリア": "イタリア",
+            "アメリカ": "アメリカ", "トンガ": "トンガ", "サモア": "サモア", "ウルグアイ": "ウルグアイ",
+            "ロシア": "ロシア", "カナダ": "カナダ", "ナミビア": "ナミビア" }, {},
+        { class: 'form-control drop-item' } %>
+    </li>
+    <li>
+      <%= f.label "テレビ局", class: 'text-left' %>
+      <%= f.select :tv,
+        { "全て": :none, "N H K": :nhk, "日本テレビ": :ntv }, {},
+        { class: 'form-control drop-item' } %>
+  </li>
+  <%= f.submit '絞り込み', class: 'btn btn-block btn-primary form-control' %>
+<% end %>
       </ul>
-    <%= f.submit '絞り込み', class: 'btn btn-block btn-primary' %>
-    <% end %>
-    <%= render partial: 'table' %>
+      <%= render partial: 'scheduletable' %>
   </div>
 </div>
