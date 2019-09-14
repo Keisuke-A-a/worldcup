@@ -66,12 +66,12 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
   # Use SendGrid - Add-ons - Heroku
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { host: 'murmuring-scrubland-59242.com' }
+  config.action_mailer.default_url_options = { host: 'murmuring-scrubland-59242.heroku.com' }
   config.action_mailer.perform_deliveries = true
   config.action_mailer.smtp_settings = {
     user_name: ENV['SENDGRID_USERNAME'],
     password: ENV['SENDGRID_PASSWORD'],
-    domain: 'murmuring-scrubland-59242.com',
+    domain: 'murmuring-scrubland-59242.heroku.com',
     address: 'smtp.sendgrid.net',
     port: 587,
     authentication: :plain,
