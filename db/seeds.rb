@@ -1,9 +1,9 @@
-User.create!(name:  "Example User",
-             email: "example@railstutorial.org",
-             password:              "foobar111",
-             password_confirmation: "foobar111",
-             activated: true,
-             activated_at: Time.zone.now)
+# User.create!(name:  "Example User",
+#              email: "example@railstutorial.org",
+#              password:              "foobar111",
+#              password_confirmation: "foobar111",
+#              activated: true,
+#              activated_at: Time.zone.now)
 
 # 99.times do |n|
 #   name  = Faker::Name.name
@@ -16,3 +16,20 @@ User.create!(name:  "Example User",
 #               activated: true,
 #               activated_at: Time.zone.now)
 # end
+
+
+require "csv"
+CSV.foreach('db/result.csv', headers: true) do |row|
+  Result.create!(member1: row['member1'],
+               member2: row['member2'],
+               score1: row['score1'],
+               score2: row['score2'],
+               pool: row['pool']
+               )
+end
+
+CSV.foreach('db/ranking.csv', headers: true) do |row|
+  Country.create(name: row['country'],
+                pool: row['pool'],
+                ranking: row['ranking'])
+end

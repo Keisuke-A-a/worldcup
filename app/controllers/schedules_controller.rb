@@ -20,6 +20,9 @@ class SchedulesController < ApplicationController
     @tv = params[:tv]
   end
 
+  def result
+    @result = Result.all
+  end
   # def send
   #   ScheduleMailer.send_starttime_before(User.second, "日本").deliver
   # end

@@ -5,7 +5,8 @@
       <h1><%= link_to 'RANKING', schedules_ranking_path %></h1>
       <h1><%= link_to '国別情報', "#" %></h1>
       <h1><%= link_to 'スケジュール', schedules_index_path %></h1>
-      <h1><%= link_to '試合結果', "#" %></h1>
+      <h1><%= link_to '試合結果', results_result_path %></h1>
+      <h1><%= link_to '試合結果pool', results_pool_path %></h1>
       <h1><%= link_to 'LOG OUT', logout_path, method: :delete %></h1>
     <% else %>
       <h1><%= link_to 'SIGN UP', new_user_path %></h1>

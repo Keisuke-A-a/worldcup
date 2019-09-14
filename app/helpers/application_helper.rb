@@ -21,14 +21,15 @@ module ApplicationHelper
     @csv_arry = Array.new
   end
 
+
   def select_ranking_pool
     select_loop(@pool, 2)
   end
   def select_pool
     select_loop(@pool, 6)
   end
-  
 
+# スケジュールから国を絞る
   def select_country
     if @country && @country != "none"
       for i in 1..@csv_data.count do
@@ -58,6 +59,15 @@ module ApplicationHelper
     for i in 1..@csv_data.count do
       if @csv_data[i-1][s] == 1
         @csv_arry << @csv_data[i-1]
+      end
+    end
+  end
+
+  def result_pool(results, p)
+    results.each do |r|
+      @arry = Array.new
+      if r.member1 == p || r.member2 == p
+        @arry << "A"
       end
     end
   end
