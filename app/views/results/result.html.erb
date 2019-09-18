@@ -1,5 +1,6 @@
 <div class='container text-center'>
   <h1>試合結果</h1>
+  <p>カッコは獲得ポイント</p>
 
   <% @result = Result.first %>
   <table class='m-auto'>
@@ -15,11 +16,11 @@
     <tbody>
       <% @results.each do |result| %>
         <tr>
-          <td><%= result.member1 %></td>
+          <td><%= "#{result.member1}""(#{result.point1})" %></td>
           <td><%= result.score1 %></td>
           <td>-</td>
           <td><%= result.score2 %></td>
-          <td><%= result.member2 %></td>
+          <td><%= "#{result.member2}""(#{result.point2})" %></td>
         </tr>
       <% end %>
     </tbody>

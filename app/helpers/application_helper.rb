@@ -7,6 +7,18 @@ module ApplicationHelper
     !current_user.nil?
   end
 
+  def admin?
+    if !current_user.nil?
+      if @current_user.admin
+        return true
+      else
+        return false
+      end
+    else
+      return false
+    end
+  end
+
   def select_loop(str, s)
     if str && str != "none"
       for i in 1..@csv_data.count do
@@ -70,5 +82,19 @@ module ApplicationHelper
         @arry << "A"
       end
     end
+  end
+
+  # ポイントを合計する
+  def point_count(country)
+    points = Result.where(member1: country)
+    point = 0
+    points.each do |p|
+      point += p.point1
+    end
+    points = Result.where(member2: country)
+    points.each do |p|
+      point += p.point2
+    end
+    return point
   end
 end

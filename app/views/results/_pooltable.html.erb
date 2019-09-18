@@ -1,0 +1,41 @@
+<div class='container text-center mt-3 pooltable'>
+  <h3><%= pool_name %></h3>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <% pool.each_with_index do |country,i| %>
+          <th scope="col"><%= country %></th>
+        <% end %>
+        <th scope="col">合計ポイント</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% pool.each_with_index do |country_1,i| %>
+        <tr>
+          <th scope="row"><%= country_1 %></th>
+          <% pool.each_with_index do |country_2,j| %>
+            <td>
+              <% if country_1 == country_2 %>
+                ー
+              <% elsif result = results.where("member1 LIKE ? AND member2 LIKE ?", "%#{country_1}%", "%#{country_2}%")[0] %>
+                <span><%= result.score1 %></span>
+                <span> - </span>
+                <span><%= result.score2 %></span>
+                <span>(<%= result.point1 %>)</span>
+              <% elsif result = results.where("member1 LIKE ? AND member2 LIKE ?", "%#{country_2}%", "%#{country_1}%")[0] %>
+                <span><%= result.score2 %></span>
+                <span> - </span>
+                <span><%= result.score1 %></span>
+                <span>(<%= result.point2 %>)</span>
+              <% else %>
+                <span>不明なエラー</span>
+              <% end %>
+            </td>
+          <% end %>
+          <td><%= point_count(country_1) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

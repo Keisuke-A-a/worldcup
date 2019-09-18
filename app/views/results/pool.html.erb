@@ -1,69 +1,8 @@
-<h1>Pool</h1>
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <% @pool_a.each_with_index do |country,i| %>
-        <th scope="col"><%= country %></th>
-      <% end %>
-    </tr>
-  </thead>
-  <tbody>
-    <% @pool_a.each_with_index do |country_1,i| %>
-      <tr>
-        <th scope="row"><%= country_1 %></th>
-        <% @pool_a.each_with_index do |country_2,j| %>
-          <td>
-            <% if country_1 == country_2 %>
-              ー
-            <% elsif result = @results_a.where("member1 LIKE ? AND member2 LIKE ?", "%#{country_1}%", "%#{country_2}%")[0] %>
-              <span><%= result.score1 %></span>
-              <span> - </span>
-              <span><%= result.score2 %></span>
-            <% elsif result = @results_a.where("member1 LIKE ? AND member2 LIKE ?", "%#{country_2}%", "%#{country_1}%")[0] %>
-              <span><%= result.score2 %></span>
-              <span> - </span>
-              <span><%= result.score1 %></span>
-            <% else %>
-              <span>不明なエラー</span>
-            <% end %>
-          </td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<table>
-  <thead>
-    <tr>
-      <td>
-      </td>
+<div class="container text-center">
+  <h1>Pool</h1>
 
-      <td>
-        <%= @pool_a[0] %>
-      </td>
-      <td>
-        <%= @pool_a[1] %>
-      </td>
-      <td>
-        <%= @pool_a[2] %>
-      </td>
-      <td>
-        <%= @pool_a[3] %>
-      </td>
-      <td>
-        <%= @pool_a[4] %>
-      </td>
-    </tr>
-  </thead>
-  <tbody>
-    <% @pool_a.each do |p| %>
-      <% result_pool(@results_a, p) %>
-      <tr>
-          <td>
-            <%= @arry %>
-          </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <%= render partial: "pooltable", locals: {pool: @pool_a, results: @results_a, pool_name: "プールA"} %>
+  <%= render partial: "pooltable", locals: {pool: @pool_b, results: @results_b, pool_name: "プールB"} %>
+  <%= render partial: "pooltable", locals: {pool: @pool_c, results: @results_c, pool_name: "プールC"} %>
+  <%= render partial: "pooltable", locals: {pool: @pool_d, results: @results_d, pool_name: "プールD"} %>
+</div>

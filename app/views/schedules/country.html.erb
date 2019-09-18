@@ -1,0 +1,11 @@
+<h1>Country</h1>
+
+<% @countries.each do |country| %>
+  <p><%= country.ranking %></p>
+  <p><%= country.name %></p>
+<% end %>
+<%= form_with(model: @country, url: schedules_country_path, local: true) do |f| %>
+  <%= f.number_field :ranking, class: 'form-controle' %>
+  <%= f.text_field :name, class: 'form-control' %>
+  <%= f.submit '更新' %>
+<% end %>

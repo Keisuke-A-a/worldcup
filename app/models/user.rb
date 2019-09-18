@@ -1,8 +1,7 @@
 require 'csv'
 class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 15 }
-  validates :email, presence: true, format: { with: /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i }
-  # validates :password, length: { in: 8..32 }
+  validates :email, presence: true, uniqueness: true, format: { with: /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i }
   validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,32}+\z/i }
 
   attr_accessor :activation_token
@@ -33,7 +32,7 @@ class User < ApplicationRecord
 
   # メールを送信するメソッド
   def self.test_mailer
-    time = Time.now
+    time = Time.now + 3600
     for i in 0..47 do
       if time.strftime("%m") == ('%02d' % @csv_data[i][1])
         if time.strftime("%d") == ('%02d' % @csv_data[i][2])
@@ -53,4 +52,5 @@ class User < ApplicationRecord
     self.activation_token = User.new_token
     self.activation_digest = User.digest(activation_token)
   end
+  
 end

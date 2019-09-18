@@ -6,7 +6,22 @@ class SchedulesController < ApplicationController
   def index
 
   end
+  
+  def country
+    @countries = Country.all
+    @country = Country.new
+  end
 
+  def country_update
+    @country = Country.find_by(ranking: params[:country][:ranking])
+    @country.name = params[:country][:name]
+    if @country.save
+      redirect_to schedules_country_path
+    else
+      flash.now[:danger] = 'false'
+      render :country
+    end
+  end
   def ranking
 
   end

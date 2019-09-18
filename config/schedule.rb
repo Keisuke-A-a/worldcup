@@ -5,12 +5,12 @@
 # 出力先のログファイルの指定
 set :output, 'log/crontab.log'
 # ジョブの実行環境の指定
-set :environment, :development
+set :environment, :production
 # Example:
 #
 # set :output, "/path/to/my/cron_log.log"
 #
-# every 1.minute do
+# every 15.minute do
 #   # command "echo 'tesatdfsafssae'"
 #   runner "User.test_mailer"
 #   # rake "some:great:rake:task"

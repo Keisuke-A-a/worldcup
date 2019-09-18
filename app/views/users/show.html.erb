@@ -1,0 +1,10 @@
+<h1>show</h1>
+
+<% @users.each do |user| %>
+  <p><%= user.id %></p>
+  <p><%= user.name %></p>
+  <p><%= user.email %></p>
+  <p><%= user.admin %></p>
+  <%= link_to '削除', user_path(user.id),  method: :delete, data: { confirm: '本当に削除しますか？' } %>
+<% end %>
+

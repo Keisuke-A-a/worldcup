@@ -42,6 +42,10 @@ td {
   font-size: 1rem;
   border: solid;
 }
+
+th {
+  width: 5rem;
+}
 #slidebar {
   height: 100vh;
   background-color: #8fa4dd;
@@ -59,5 +63,15 @@ td {
   width: 50%;
   .form-control {
     margin-bottom: 1rem;
+  }
+}
+
+.pooltable {
+  padding-top: 3rem;
+  th {
+    width: 5rem;
+  }
+  td {
+    width: 5rem;
   }
 }
