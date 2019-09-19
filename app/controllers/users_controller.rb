@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  # before_action :require_admin, only: [:show]
+  before_action :require_admin, only: [:show]
   def show
     @users = User.all
   end
