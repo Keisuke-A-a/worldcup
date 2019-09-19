@@ -8,15 +8,13 @@ module ApplicationHelper
   end
 
   def admin?
-    if !current_user.nil?
-      if @current_user.admin
-        return true
-      else
-        return false
-      end
-    else
-      return false
-    end
+    return !current_user.nil? ? @current_user.admin : false
+
+    # if !current_user.nil?
+    #   return @current_user.admin
+    # else
+    #    false
+    # end
   end
 
   def select_loop(str, s)

@@ -1,11 +1,17 @@
 class ResultsController < ApplicationController
-  
+
   # before_action :require_admin, only: [:input]
   def result
-    @results = Result.all
+    @results = Result.all.order("id ASC")
   end
 
   def pool
+    # @pools =[]
+    # @results = []
+    # ["A","B","C","D"].each do |group|
+    #   @pools << Country.where(pool: group).map(&:name)
+    #   @results << Result.where(pool: group)
+    # end
     @pool_a = Country.where(pool: "A").map(&:name)
     @results_a = Result.where(pool: "A")
     @pool_b = Country.where(pool: "B").map(&:name)
