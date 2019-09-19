@@ -1,6 +1,6 @@
 class ResultsController < ApplicationController
   
-  before_action :require_admin, only: [:input]
+  # before_action :require_admin, only: [:input]
   def result
     @results = Result.all
   end
@@ -22,13 +22,13 @@ class ResultsController < ApplicationController
   end
 
   def update
-    @result = Result.find(params[:id])
+    @result = Result.find(params[:game])
     @result.score1 = params[:score1]
     @result.score2 = params[:score2]
     @result.point1 = params[:point1]
     @result.point2 = params[:point2]
     if @result.save
-      redirect_to results_input_path
+      redirect_to results_result_path
     else
       render :input
     end
