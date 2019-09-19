@@ -2,6 +2,7 @@
   <div class='container text-center'>
     <% if admin? %>
       <h1><%= link_to 'input', results_input_path %></h1>
+      <h1><%= link_to 'show', '/users/show' %></h1>
     <% end %>
     <h1><%= link_to 'TOP', "#" %></h1>
     <h1><%= link_to 'RANKING', schedules_ranking_path %></h1>
