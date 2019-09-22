@@ -17,22 +17,31 @@
         <td></td>
         <td>N H K</td>
         <td>日テレ</td>
+        <td></td>
       </tr>
     </thead>
+    <% ntime = Time.now %>
+    <% s_arry = [0] %>
     <tbody>
       <% @csv_arry.each do |data| %>
-        <tr>
+        <% stime = Time.local(2019, data[:month], data[:day], data[:hour], data[:minute]) %>
+        <% s = 0 %>
+        <% s = 1 if stime + 7200 < ntime %>
+        <tr class='tschedule'>
           <td><%= "#{data[:month]}/#{data[:day]}" %></td>
           <td><%= data[:dayoftheweek] %></td>
-          <td><%= data[:time] %></td>
+          <td><%= "#{data[:hour]}:#{data[:minute]}" %></td>
           <td><%= data[:place] %></td>
           <td><%= data[:pool] %></td>
           <td><%= data[:member1] %></td>
           <td><%= data[:member2] %></td>
           <td><%= "○" if data[:nhk] == 1 %></td>
           <td><%= "○" if data[:ntv] == 1 %></td>
+          <td><%= "終了" if s == 1 %></td>
         </tr>
+        <% s_arry << s %>
       <% end %>
+        <div id="stime" data-stime-id="<%= s_arry.to_json %>"></div>
     </tbody>
   </table>
 </div>

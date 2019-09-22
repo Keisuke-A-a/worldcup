@@ -5,8 +5,8 @@
       <ul class='list-unstyled form-group m-auto' >
         <li>
           <%= f.label "プール" %>
-          <%= f.select :pool,
-            { "全て": :none, "A": "A", "B": "B", "C": "C", "D": "D" }, {},{ class: 'form-control drop-item' } %>
+        <%= f.select :pool,
+          { "全て": :none, "A": "A", "B": "B", "C": "C", "D": "D" }, {},{ class: 'form-control drop-item' } %>
       </li>
       <li>
         <%= f.label "国", class: 'text-left' %>
@@ -31,3 +31,6 @@
       <%= render partial: 'scheduletable' %>
   </div>
 </div>
+<% content_for(:body_attributes) do %>
+    data-turbolinks="false"
+<% end %>

@@ -7,7 +7,9 @@
     <h1><%= link_to 'TOP', "#" %></h1>
     <h1><%= link_to 'RANKING', schedules_ranking_path %></h1>
     <h1><%= link_to '国別情報', schedules_country_path %></h1>
+    <div data-turbolinks="false">
     <h1><%= link_to 'スケジュール', schedules_index_path %></h1>
+    </div>
     <h1><%= link_to '試合結果', results_result_path %></h1>
     <h1><%= link_to '試合結果pool', results_pool_path %></h1>
     <% if logged_in? %>

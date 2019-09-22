@@ -40,6 +40,8 @@ gem 'bootstrap'
 gem 'jquery-rails'
 gem 'whenever', :require => false
 gem 'rails_admin'
+gem 'solargraph', group: :development
+gem 'jquery-turbolinks'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

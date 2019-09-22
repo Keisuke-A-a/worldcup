@@ -10,6 +10,9 @@
   </head>
 
   <body>
+    <% if content_for?(:body_attributes) %>
+      <%= yield(:body_attributes) %>
+    <% end %>
     <% flash.each do |key, value| %>
       <div class="alert alert-<%= key %>" role="alert"><%= value %></div>
     <% end %>
@@ -23,8 +26,8 @@
 
     </div>
     <script>
-$(function(){
-  $(".alert").fadeOut(2000);
-});
+      $(function(){
+        $(".alert").fadeOut(2000);
+      });
     </script>
 </html>
